@@ -21,7 +21,13 @@ Explore the diverse range of projects featured in this portfolio:
 
 - **Description:** This project focuses on visualizing data using AWS QuickSight sourced from AWS S3.
 - **Technologies Used:** AWS S3, AWS QuickSight.
-- [Link to Project README](https://github.com/Kevin-byt/AWS-Projects/tree/main/Data%20Visualization%20with%20QuickSight%20and%20S3#readme)
+- [Link to Project README](/Data%20Visualization%20with%20QuickSight%20and%20S3/README.md)
+
+### Project 2: S3 Static Website
+
+- **Description:** Hosting a static website on AWS S3.
+- **Technologies Used:** AWS S3.
+- [Link to Project README](/S3%20Static%20Website/README.md)
 
 ## Getting Started
 
