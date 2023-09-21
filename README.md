@@ -1,0 +1,1 @@
+This folder will contain a variety of AWS project files and links to the respective blogs

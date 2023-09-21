@@ -1,0 +1,30 @@
+""" 
+The manifest format can be found at:
+https://docs.aws.amazon.com/quicksight/latest/user/supported-manifest-file-format.html
+"""
+
+{
+    "fileLocations": [
+        {
+            "URIs": [
+                "uri1",
+                "uri2",
+                "uri3"
+            ]
+        },
+        {
+            "URIPrefixes": [
+                "prefix1",
+                "prefix2",
+                "prefix3"
+            ]
+        }
+    ],
+    "globalUploadSettings": {
+        "format": "JSON",
+        "delimiter": ",",
+        "textqualifier": "'",
+        "containsHeader": "true"
+    }
+}
+                            
