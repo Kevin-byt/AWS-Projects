@@ -29,6 +29,12 @@ Explore the diverse range of projects featured in this portfolio:
 - **Technologies Used:** AWS S3.
 - [Link to Project README](/S3%20Static%20Website/README.md)
 
+### Project 3: CI-CD on AWS
+
+- **Description:** Cretating a CI- CD pipeline on AWS using AWS CodePipeline
+- **Technologies Used:** AWS CodePipeline, GitHub.
+- [Link to Project README](/CI-CD%20Pipeline/README.md)
+
 ## Getting Started
 
 If any of these projects pique your interest, simply navigate to the respective project directories and follow the comprehensive instructions provided in their README files for setup and utilization.
@@ -40,3 +46,7 @@ Should you have any inquiries, feedback, or wish to explore potential collaborat
 - **LinkedIn:** [Kevin Kiruri's LinkedIn](https://www.linkedin.com/in/kevin-kiruri/)
 
 Thank you for visiting my AWS Projects Portfolio! I trust you'll find these projects not only informative but also inspiring.
+
+---
+
+*Author: [Kevin Kiruri](https://www.linkedin.com/in/kevin-kiruri/)*
