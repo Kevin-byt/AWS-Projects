@@ -12,8 +12,11 @@ Hi, I'm Kevin Kiruri, and I'm passionate about cloud computing and AWS. I've cre
 Here's a brief overview of the projects included in this portfolio:
 
 **Project 1: Data Visualization with AWS QuickSight and S3**
-[Link to Project README]()
+
+[Link to Project README](https://github.com/Kevin-byt/AWS-Projects/tree/main/Data%20Visualization%20with%20QuickSight%20and%20S3#readme)
+
 Description: Visualizing Data with AWS QuickSight from AWS S3.
+
 Technologies Used: AWS S3, AWS QuickSight.
 
 
