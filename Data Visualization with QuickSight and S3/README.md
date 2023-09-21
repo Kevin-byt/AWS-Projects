@@ -33,4 +33,4 @@ For a comprehensive walkthrough, please visit the full blog post: [Unleash the P
 
 ---
 
-*Author: Kevin Kiruri*
+*Author: [Kevin Kiruri](https://www.linkedin.com/in/kevin-kiruri/)*

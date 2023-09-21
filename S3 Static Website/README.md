@@ -70,4 +70,4 @@ For more details and a complete walkthrough, please refer to the original articl
 
 ---
 
-*Author: Kevin Kiruri*
+*Author: [Kevin Kiruri](https://www.linkedin.com/in/kevin-kiruri/)*
