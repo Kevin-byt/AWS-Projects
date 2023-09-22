@@ -15,7 +15,7 @@ Before diving into the world of data visualization with AWS QuickSight and Amazo
 
 Let's embark on the journey of unlocking data insights with AWS QuickSight and Amazon S3. Follow these key steps to get started:
 
-1. **Data Source:** Begin by obtaining your dataset. For instance, you can use Spotify data on artists and listeners, which is readily available on platforms like Kaggle.
+1. **Data Source:** Begin by obtaining your dataset. For instance, you can use Spotify data on artists and listeners, which is readily available on platforms like [Kaggle](https://www.kaggle.com/datasets).
 
 2. **Creating an S3 Bucket and Uploading Data:** Set up an S3 bucket on AWS, upload your dataset files (`listeners.csv` and `listeners.json`), and configure the manifest file.
 
