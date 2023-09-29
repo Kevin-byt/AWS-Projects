@@ -35,6 +35,12 @@ Explore the diverse range of projects featured in this portfolio:
 - **Technologies Used:** AWS CodePipeline, GitHub.
 - [Link to Project README](/CI-CD%20Pipeline/README.md)
 
+### Project 3: Scheduling EC2 Instances for Off-Hours
+
+- **Description:** Starting and stopping EC2 instances based on a time schedule
+- **Technologies Used:** AWS Lambda, AWS EventBridge, AWS EC2, AWS IAM.
+- [Link to Project README](/Lambda/Start-Stop-EC2/README.md)
+
 ## Getting Started
 
 If any of these projects pique your interest, simply navigate to the respective project directories and follow the comprehensive instructions provided in their README files for setup and utilization.
