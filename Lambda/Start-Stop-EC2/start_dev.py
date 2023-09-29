@@ -13,8 +13,6 @@ ec2 = boto3.client('ec2', region_name=aws_region)
 def lambda_handler(event, context):
     # Get instances with the specified tag and value
     instances_to_start = get_instances_with_tag(tag_key, tag_value)
-    print('intances')
-    print(instances_to_start)
     
     if instances_to_start:
         # Start the instances
@@ -40,10 +38,6 @@ def get_instances_with_tag(key, value):
                 }
             ]
         )
-        
-        print('Response is:')
-        print(response)
-        print('response done')
         
         instances = []
         for reservation in response['Reservations']:
