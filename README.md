@@ -37,8 +37,8 @@ Explore the diverse range of projects featured in this portfolio:
 
 ### Project 4: Scheduling EC2 Instances for Off-Hours
 
-- **Description:** Starting and stopping EC2 instances based on a time schedule
-- **Technologies Used:** AWS Lambda, AWS EventBridge, AWS EC2, AWS IAM.
+- **Description:** Starting and stopping EC2 instances based on a time schedule, including IaC
+- **Technologies Used:** AWS Lambda, AWS EventBridge, AWS EC2, AWS IAM, Terraform
 - [Link to Project README](/Lambda/Start-Stop-EC2/README.md)
 
 ## Getting Started
