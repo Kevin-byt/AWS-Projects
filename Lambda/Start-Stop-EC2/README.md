@@ -31,6 +31,7 @@ Follow these steps to schedule your EC2-innstances for off hours:
 4. **Scheduling the Lambda Function**
     - Set up CloudWatch Events Rules to schedule the Lambda function executions.
     - Define the schedule based on your requirements, specifying when to start and stop instances.
+    - Using IaC (terraform) to deploy the infrastructure
 
 ## :tada: Conclusion
 
