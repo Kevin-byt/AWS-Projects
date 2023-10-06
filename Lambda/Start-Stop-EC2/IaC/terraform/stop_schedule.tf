@@ -1,8 +1,8 @@
 resource "aws_cloudwatch_event_rule" "stop_schedule" {
   name                = "stop-instances-schedule" 
   description         = "Stop test instances at 5pm weekdays"
-#   schedule_expression = "cron(0 17 ? * MON-FRI *)"  
-  schedule_expression = "cron(55 13 ? * * *)" #Time in UTC
+  schedule_expression = "cron(0 17 ? * MON-FRI *)"  #Time in UTC
+#   schedule_expression = "cron(55 13 ? * * *)" #Time in UTC
 }
 
 resource "aws_cloudwatch_event_target" "stop_schedule_target" {

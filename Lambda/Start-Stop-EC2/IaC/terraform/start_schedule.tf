@@ -1,8 +1,8 @@
 resource "aws_cloudwatch_event_rule" "start_schedule" {
   name                = "start-instances-schedule"
   description         = "Start test instances at 8am weekdays"
-#   schedule_expression = "cron(0 8 ? * MON-FRI *)"
-  schedule_expression = "cron(00 14 ? * * *)" #Time in UTC
+  schedule_expression = "cron(0 8 ? * MON-FRI *)" #Time in UTC
+#   schedule_expression = "cron(00 14 ? * * *)" #Time in UTC
 }
 
 # Add Lambda functions as targets for CloudWatch rules
