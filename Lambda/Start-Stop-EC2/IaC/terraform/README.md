@@ -1,4 +1,4 @@
-# Terraform README
+# Terraform
 
 This README provides instructions on how to use Terraform to manage your infrastructure. Terraform is an infrastructure as code (IAC) tool that allows you to define and provision infrastructure resources in a declarative configuration file.
 
