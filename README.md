@@ -41,6 +41,12 @@ Explore the diverse range of projects featured in this portfolio:
 - **Technologies Used:** AWS Lambda, AWS EventBridge, AWS EC2, AWS IAM, Terraform
 - [Link to Project README](/Lambda/Start-Stop-EC2/README.md)
 
+### Project 5: Serverless Web App Development
+
+- **Description:** Deploying a serverless Web-App
+- **Technologies Used:** AWS Amplify, AWS Lambda, API Gateway, DynamoDB, AWS IAM
+- [Link to Project README](/Amplify/README.md)
+
 ## Getting Started
 
 If any of these projects pique your interest, simply navigate to the respective project directories and follow the comprehensive instructions provided in their README files for setup and utilization.
