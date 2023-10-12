@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>To the Power of Math!</title>
+    <title>Rectangle</title>
     <!-- Styling for the client UI -->
     <style>
     h1 {
@@ -41,14 +41,14 @@
         }
     </style>
     <script>
-        // callAPI function that takes the base and exponent numbers as parameters
-        var callAPI = (base,exponent)=>{
+        // callAPI function that takes the length and width numbers as parameters
+        var callAPI = (length,width)=>{
             // instantiate a headers object
             var myHeaders = new Headers();
             // add content type header to object
             myHeaders.append("Content-Type", "application/json");
             // using built in JSON utility package turn object to string and store in a variable
-            var raw = JSON.stringify({"base":base,"exponent":exponent});
+            var raw = JSON.stringify({"length":length,"width":width});
             // create a JSON object with parameters for API call and store in a variable
             var requestOptions = {
                 method: 'POST',
@@ -57,7 +57,7 @@
                 redirect: 'follow'
             };
             // make API call with parameters and use promises to get response
-            fetch("YOUR API GATEWAY ENDPOINT", requestOptions)
+            fetch("https://yuavndwnn4.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
             .then(response => response.text())
             .then(result => alert(JSON.parse(result).body))
             .catch(error => console.log('error', error));
@@ -65,14 +65,14 @@
     </script>
 </head>
 <body>
-    <h1>TO THE POWER OF MATH!</h1>
+    <h1>AREA OF A RECTANGLE!</h1>
 	<form>
-        <label>Base number:</label>
-        <input type="text" id="base">
-        <label>...to the power of:</label>
-        <input type="text" id="exponent">
+        <label>Length:</label>
+        <input type="text" id="length">
+        <label>Width:</label>
+        <input type="text" id="width">
         <!-- set button onClick method to call function we defined passing input values as parameters -->
-        <button type="button" onclick="callAPI(document.getElementById('base').value,document.getElementById('exponent').value)">CALCULATE</button>
+        <button type="button" onclick="callAPI(document.getElementById('length').value,document.getElementById('width').value)">CALCULATE</button>
     </form>
 </body>
 </html>
