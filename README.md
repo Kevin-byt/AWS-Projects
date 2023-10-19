@@ -47,6 +47,12 @@ Explore the diverse range of projects featured in this portfolio:
 - **Technologies Used:** AWS Amplify, AWS Lambda, API Gateway, DynamoDB, AWS IAM
 - [Link to Project README](/Amplify/README.md)
 
+### Project 6: 12weeksworkshop
+
+- **Description:** A series of AWS projects under the [https://12weeksworkshops.com/](https://12weeksworkshops.com/), organized by [AWS USER GROUP YAOUNDE](https://www.linkedin.com/company/aws-user-group-yaounde/)
+- **Technologies Used:** AWS Amplify, AWS Lambda, API Gateway, DynamoDB, AWS IAM
+- [Link to Project README](/12weeksworkshop/README.md)
+
 ## Getting Started
 
 If any of these projects pique your interest, simply navigate to the respective project directories and follow the comprehensive instructions provided in their README files for setup and utilization.
