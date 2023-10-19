@@ -49,7 +49,7 @@ Explore the diverse range of projects featured in this portfolio:
 
 ### Project 6: 12weeksworkshop
 
-- **Description:** A series of AWS projects under the [https://12weeksworkshops.com/](https://12weeksworkshops.com/), organized by [AWS USER GROUP YAOUNDE](https://www.linkedin.com/company/aws-user-group-yaounde/)
+- **Description:** A series of AWS projects under the [12 Weeks Workshop Challenge](https://12weeksworkshops.com/), organized by [AWS USER GROUP YAOUNDE](https://www.linkedin.com/company/aws-user-group-yaounde/)
 - **Technologies Used:** AWS Amplify, AWS Lambda, API Gateway, DynamoDB, AWS IAM
 - [Link to Project README](/12weeksworkshop/README.md)
 
