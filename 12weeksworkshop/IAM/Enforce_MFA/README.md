@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the AWS Multi-Factor Authentication (MFA) Enforcement Guide. This README provides an overview of the steps detailed in the [Enforcing MFA on AWS](link_to_your_blog_here), authored by [Kevin Kiruri](https://www.linkedin.com/in/kevin-kiruri/).
+Welcome to the AWS Multi-Factor Authentication (MFA) Enforcement Guide. This README provides an overview of the steps detailed in the [Enforcing MFA on AWS](https://medium.com/@kevinkiruri/enforcing-mfa-on-aws-66b228df699b), authored by [Kevin Kiruri](https://www.linkedin.com/in/kevin-kiruri/).
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ Before enforcing MFA on your AWS account, make sure you have an AWS account and 
 
 ## Conclusion
 
-Implementing Multi-Factor Authentication (MFA) is vital for AWS security. Follow these simplified steps to safeguard your AWS account and resources effectively. For the full guide, visit [Enforcing MFA on AWS](link_to_your_blog_here).
+Implementing Multi-Factor Authentication (MFA) is vital for AWS security. Follow these simplified steps to safeguard your AWS account and resources effectively. For the full guide, visit [Enforcing MFA on AWS](https://medium.com/@kevinkiruri/enforcing-mfa-on-aws-66b228df699b).
 
 ---
 
