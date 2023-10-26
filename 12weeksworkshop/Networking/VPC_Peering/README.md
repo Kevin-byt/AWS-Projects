@@ -12,13 +12,13 @@ Before establishing VPC Peering connections on AWS, make sure you have an AWS ac
 
 ### Step 1: Prepare Networking Prerequisites
 
-1. **Install essential CloudFormation templates:** Install necessary [CloudFormation template](/VPC_Peering/pre-requisites.yaml) to create IAM roles and an S3 Bucket.
+1. **Install essential CloudFormation templates:** Install necessary [CloudFormation template](pre-requisites.yaml) to create IAM roles and an S3 Bucket.
 2. **Access the AWS Console:** Access the AWS Console and navigate to the CloudFormation service.
 3. **Create a CloudFormation stack:** Create a CloudFormation stack using the provided templates.
 
 ### Step 2: Create Three VPCs
 
-1. **Utilize a CloudFormation template:** Utilize a [CloudFormation template](/VPC_Peering/create_VPC.yaml) to create VPC A, VPC B, and VPC C, each with specific configurations.
+1. **Utilize a CloudFormation template:** Utilize a [CloudFormation template](create_VPC.yaml) to create VPC A, VPC B, and VPC C, each with specific configurations.
 2. **Access the AWS Console:** Access the AWS Console and navigate to the CloudFormation service.
 3. **Create a CloudFormation stack:** Create a CloudFormation stack using the VPC template.
 
