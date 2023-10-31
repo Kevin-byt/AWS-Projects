@@ -4,17 +4,17 @@ Welcome to the 12-week AWS Projects Workshop! This repository serves as the cent
 
 ## Projects
 
-1. **Deploy a Web Application on AWS using an Auto Scaling Group**
+1. **Week 1: Deploy a Web Application on AWS using an Auto Scaling Group**
    - [Project README](../Auto%20Scaling/README.md)
    - [Project Blog](https://medium.com/@kevinkiruri/deploy-a-web-application-on-aws-using-an-auto-scaling-group-bdec934c47e7)
    - **Technologies Used:** AWS Amplify, AWS Lambda, API Gateway, DynamoDB, AWS IAM
 
-2. **Enforcing MFA in AWS**
+2. **Week 2: Enforcing MFA in AWS**
    - [Project README](/IAM/Enforce_MFA/README.md)
    - [Project Blog](https://medium.com/@kevinkiruri/enforcing-mfa-on-aws-66b228df699b)
    - **Technologies Used:** AWS IAM
 
-3. **Networking**
+3. **Week 3: Networking**
 
    a. VPC Peering
    - [Project README](/Networking/VPC_Peering/README.md)
