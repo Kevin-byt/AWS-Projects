@@ -15,6 +15,7 @@ Welcome to the 12-week AWS Projects Workshop! This repository serves as the cent
    - **Technologies Used:** AWS IAM
 
 3. **Networking**
+
    a. VPC Peering
    - [Project README](/Networking/VPC_Peering/README.md)
    - [Project Blog](https://medium.com/@kevinkiruri/creating-a-vpc-peering-connection-on-aws-ff35156e39b9)
