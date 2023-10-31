@@ -11,8 +11,19 @@ Welcome to the 12-week AWS Projects Workshop! This repository serves as the cent
 
 2. **Enforcing MFA in AWS**
    - [Project README](/IAM/Enforce_MFA/README.md)
-   - [Project Blog](project2/blog.md)
+   - [Project Blog](https://medium.com/@kevinkiruri/enforcing-mfa-on-aws-66b228df699b)
    - **Technologies Used:** AWS IAM
+
+3. **Networking**
+   a. VPC Peering
+   - [Project README](/Networking/VPC_Peering/README.md)
+   - [Project Blog](https://medium.com/@kevinkiruri/creating-a-vpc-peering-connection-on-aws-ff35156e39b9)
+   - **Technologies Used:** AWS VPC, VPC Peering
+
+   b. AWS Transit Gateway
+   - [Project README](/Networking/AWS_Transit_Gateway/README.md)
+   - [Project Blog](https://medium.com/@kevinkiruri/centralizing-cloud-networks-a-practical-guide-to-deploying-aws-transit-gateway-d97e7f64a03b)
+   - **Technologies Used:** AWS VPC, Transit Gateway
 
 ## Getting Started
 
