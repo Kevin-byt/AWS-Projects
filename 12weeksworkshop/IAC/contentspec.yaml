@@ -1,0 +1,36 @@
+version: 2.0
+
+defaultLocaleCode: en
+localeCodes:
+- en
+- ja
+
+params:
+  author: AWS
+  description: AWS CloudFormation Workshop
+  disableAssetsBusting: true
+  disableBreadcrumb: false
+  disableInlineCopyToClipBoard: true
+  disableLanguageSwitchingButton: false
+  disableNextPrev: false
+  disableSearch: false
+  disableShortcutsTitle: true
+  themeVariant: aws
+
+awsAccountConfig:
+  accountSources:
+    - WorkshopStudio
+  regionConfiguration:
+    deployableRegions:
+      required:
+        - us-east-1
+    minAccessibleRegions: 1
+    maxAccessibleRegions: 3
+    accessibleRegions:
+      required:
+        - us-east-1
+        - us-east-2
+        - us-west-2
+  participantRole:
+    managedPolicies:
+      - "arn:aws:iam::aws:policy/AdministratorAccess"

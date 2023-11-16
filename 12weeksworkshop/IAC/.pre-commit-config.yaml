@@ -1,0 +1,81 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+repos:
+
+# General
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-case-conflict
+  - id: detect-private-key
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+    args:
+      - --fix=lf
+    exclude: /package-lock\.json$
+  - id: check-added-large-files
+    args:
+      - --maxkb=1000
+  - id: check-merge-conflict
+
+# Secrets
+- repo: https://github.com/awslabs/git-secrets
+  rev: 80230afa8c8bdeac766a0fece36f95ffaa0be778
+  hooks:
+  - id: git-secrets
+    entry: git-secrets --scan
+    files: .
+
+# CloudFormation
+- repo: https://github.com/aws-cloudformation/cfn-lint
+  rev: v0.79.7
+  hooks:
+  - id: cfn-lint-rc
+    files: code/solutions/.*\.(ya?ml|template)$
+
+- repo: https://github.com/aws-cloudformation/rain
+  rev: v1.4.4
+  hooks:
+  - id: cfn-format
+    files: code/solutions/.*\.(ya?ml|template)$
+    exclude: code/solutions/policy-as-code-with-guard/example_bucket_tests\.yaml|code/solutions/linting-and-testing/\.taskcat\.yml
+
+- repo: https://github.com/stelligent/cfn_nag
+  rev: v0.8.10
+  hooks:
+  -   id: cfn-nag
+      entry: cfn_nag
+      language: ruby
+      args:
+        - --ignore-fatal
+      files: code/solutions/.*\.(ya?ml|template)$
+      exclude: code/solutions/looping-over-collections/.*\.yaml
+
+    # Python
+- repo: https://github.com/pycqa/pylint
+  rev: v3.0.0a7
+  hooks:
+    - id: pylint
+      args:
+        - --errors-only
+        - --disable=E0401
+
+- repo: https://github.com/psf/black
+  rev: 23.7.0
+  hooks:
+    - id: black
+
+- repo: https://github.com/PyCQA/isort
+  rev: 5.12.0
+  hooks:
+    - id: isort
+      args: ["--profile", "black"]
+
+# Shell check
+- repo: https://github.com/shellcheck-py/shellcheck-py
+  rev: v0.9.0.5
+  hooks:
+    - id: shellcheck
+      files: solutions/.*\.(sh)$
