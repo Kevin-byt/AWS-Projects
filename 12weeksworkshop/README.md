@@ -26,6 +26,21 @@ Welcome to the 12-week AWS Projects Workshop! This repository serves as the cent
    - [Project Blog](https://medium.com/@kevinkiruri/centralizing-cloud-networks-a-practical-guide-to-deploying-aws-transit-gateway-d97e7f64a03b)
    - **Technologies Used:** AWS VPC, Transit Gateway
 
+4. **Week 4: Hosting a static website on AWS S3**
+   - [Project README](https://github.com/Kevin-byt/AWS-Projects/tree/main/S3%20Static%20Website#readme)
+   - [Project Blog](https://medium.com/@kevinkiruri/hosting-a-static-website-on-aws-s3-35f49dd1c5e6)
+   - **Technologies Used:** AWS S3
+
+5. **Week 5: Connect to RDS from EC2**
+   - [Project README](/Databases/EC2_RDS/README.md)
+   - [Project Blog](https://medium.com/@kevinkiruri/connect-to-rds-from-ec2-64b66378ca5d)
+   - **Technologies Used:** AWS EC2, AWS RDS, SSH
+
+6. **Week 6: Selectively provisioning AWS resources by setting conditions on Cloud Formation**
+   - [Project README](/IAC/README.md)
+   - [Project Blog](https://medium.com/@kevinkiruri/selectively-provisioning-aws-resources-by-setting-conditions-on-cloud-formation-794afe8ca190)
+   - **Technologies Used:** AWS EC2, AWS CloudFormation
+
 ## Getting Started
 
 To begin a specific project, click on the provided links to access the project's README and blog post. Follow the instructions and enjoy your AWS journey!
