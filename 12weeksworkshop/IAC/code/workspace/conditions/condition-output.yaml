@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 
-Description: AWS CloudFormation workshop - Conditions at resource level (uksb-1q9p31idr) (tag:conditions).
+Description: AWS CloudFormation workshop - Conditions at Outputs level (uksb-1q9p31idr) (tag:conditions).
 
 Parameters:
   LatestAmiId:
@@ -42,4 +42,9 @@ Resources:
       Size: 2
       AvailabilityZone: !GetAtt EC2Instance.AvailabilityZone
       Encrypted: true
+    Condition: IsProduction
+
+Outputs:
+  VolumeId:
+    Value: !Ref Volume
     Condition: IsProduction
