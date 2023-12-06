@@ -41,6 +41,11 @@ Welcome to the 12-week AWS Projects Workshop! This repository serves as the cent
    - [Project Blog](https://medium.com/@kevinkiruri/selectively-provisioning-aws-resources-by-setting-conditions-on-cloud-formation-794afe8ca190)
    - **Technologies Used:** AWS EC2, AWS CloudFormation
 
+7. **Week 7: Deploying a container with Amazon ECS**
+   - [Project README](/ECS/README.md)
+   - [Project Blog](https://kevinkiruri.medium.com/deploying-a-container-with-amazon-ecs-d95dcab8b411)
+   - **Technologies Used:** AWS ECS, Docker
+
 ## Getting Started
 
 To begin a specific project, click on the provided links to access the project's README and blog post. Follow the instructions and enjoy your AWS journey!
