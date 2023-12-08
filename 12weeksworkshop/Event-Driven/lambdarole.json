@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sns:Publish",
+                "logs:CreateLogGroup"
+            ],
+            "Resource": [
+                "YOUR_SNS_TOPIC_ARN"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:{REGION}:{YOUR ACCOUNT}:log-group:/aws/lambda/{YOUR LAMBDA FUNCTION}:*"
+        }
+    ]
+}
