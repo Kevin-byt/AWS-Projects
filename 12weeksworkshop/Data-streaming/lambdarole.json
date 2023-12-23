@@ -1,0 +1,32 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "kinesisAccess",
+			"Effect": "Allow",
+			"Action": [
+				"kinesis:*"
+			],
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:RequestedRegion": "us-east-1"
+				}
+			}
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"logs:*"
+			],
+			"Resource": "arn:aws:logs:*:*:*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"s3:*"
+			],
+			"Resource": "arn:aws:s3:::*"
+		}
+	]
+}
