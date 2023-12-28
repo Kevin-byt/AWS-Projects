@@ -10,7 +10,7 @@ Welcome to the 12-week AWS Projects Workshop! This repository serves as the cent
    - **Technologies Used:** AWS Amplify, AWS Lambda, API Gateway, DynamoDB, AWS IAM
 
 2. **Week 2: Enforcing MFA in AWS**
-   - [Project README](/IAM/Enforce_MFA/README.md)
+   - [Project README](/12weeksworkshop/IAM/Enforce_MFA/README.md)
    - [Project Blog](https://medium.com/@kevinkiruri/enforcing-mfa-on-aws-66b228df699b)
    - **Technologies Used:** AWS IAM
 
@@ -57,7 +57,7 @@ Welcome to the 12-week AWS Projects Workshop! This repository serves as the cent
    - **Technologies Used:** S3, SNS, Lambda
 
 10. **Week 10: Real Time Data Streaming System with Amazon Kinesis Data Streams**
-   - [Project README](/Data-streaming/README.md)
+   - [Project README](/12weeksworkshop/Data-streaming/README.md)
    - [Project Blog](https://kevinkiruri.medium.com/build-a-real-time-data-streaming-system-with-amazon-kinesis-data-streams-08d62301d1cd)
    - **Technologies Used:** Kinesis, IAM, Lambda, S3
 
