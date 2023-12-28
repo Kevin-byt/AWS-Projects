@@ -46,6 +46,21 @@ Welcome to the 12-week AWS Projects Workshop! This repository serves as the cent
    - [Project Blog](https://kevinkiruri.medium.com/deploying-a-container-with-amazon-ecs-d95dcab8b411)
    - **Technologies Used:** AWS ECS, Docker
 
+8. **Week 8: Serverless Web App Development**
+   - [Project README](https://github.com/Kevin-byt/AWS-Projects/tree/main/Amplify)
+   - [Project Blog](https://kevinkiruri.medium.com/serverless-web-app-development-made-easy-a-complete-guide-with-aws-amplify-dynamodb-lambda-and-052daf5b978d)
+   - **Technologies Used:** AWS Amplify, AWS Lambda, API Gateway, DynamoDB, AWS IAM
+
+9. **Week 9: Event-Driven Architecture**
+   - [Project README](/Event-Driven/README.md)
+   - [Project Blog](https://kevinkiruri.medium.com/aws-event-driven-architecture-098db8bee1b0)
+   - **Technologies Used:** S3, SNS, Lambda
+
+10. **Week 10: Real Time Data Streaming System with Amazon Kinesis Data Streams**
+   - [Project README](/Data-streaming/README.md)
+   - [Project Blog](https://kevinkiruri.medium.com/build-a-real-time-data-streaming-system-with-amazon-kinesis-data-streams-08d62301d1cd)
+   - **Technologies Used:** Kinesis, IAM, Lambda, S3
+
 ## Getting Started
 
 To begin a specific project, click on the provided links to access the project's README and blog post. Follow the instructions and enjoy your AWS journey!
