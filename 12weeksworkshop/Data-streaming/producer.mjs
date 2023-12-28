@@ -26,7 +26,7 @@ async function sendToKinesis(payload, partitionKey) {
     const params = {        
         Data: JSON.stringify(payload),              
         PartitionKey: partitionKey, 
-        StreamName: 'whiz-data-stream'      
+        StreamName: 'learn-data-stream'      
     }           
     await kinesis.putRecord(params).promise().then(response => {        
         console.log(response);      
