@@ -1,0 +1,284 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters:
+  S3BucketName:
+    Type: String
+    Default: "productinventory130224"
+    Description: Name of the S3 bucket for uploading the CSV file
+
+  NotificationEmail:
+    Type: String
+    # Default: "Enter your mail as the default"
+    Description: Email address for the SNS topic subscription
+
+Resources:
+  InventoryBucket:
+    Type: AWS::S3::Bucket
+    DependsOn:
+      - InventoryUploadLambdaPermission
+    Properties:
+      BucketName: !Ref S3BucketName
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt InventoryUploadLambdaFunction.Arn
+            Filter:
+              S3Key:
+                Rules:
+                - Name: suffix
+                  Value: .csv
+
+  InventoryUploadLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !Ref InventoryUploadLambdaFunction
+      Principal: s3.amazonaws.com
+      SourceArn: !Sub 'arn:aws:s3:::${S3BucketName}'
+      SourceAccount: !Ref AWS::AccountId
+
+  InventoryUploadLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      MemorySize: 128
+      Timeout: 300
+      Handler: index.lambda_handler
+      FunctionName: InventoryUpload
+      Runtime: python3.11
+      Architectures:
+        - x86_64
+      Role: !GetAtt InventoryLambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          import json
+          import boto3
+          import csv
+          import os
+
+          def lambda_handler(event, context):
+              # Get the S3 bucket and object information from the event
+              s3_bucket = event['Records'][0]['s3']['bucket']['name']
+              s3_key = event['Records'][0]['s3']['object']['key']
+
+              # Test lambda function manually
+              # s3_bucket = 'appledeviceinventory11282023'
+              # s3_key = 'inventory.csv'
+
+              # Set the DynamoDB table name
+              dynamo_table_name = 'AppleInventoryTable'
+
+              # Create a DynamoDB client
+              dynamodb = boto3.resource('dynamodb')
+              table = dynamodb.Table(dynamo_table_name)
+
+              # Create an S3 client
+              s3 = boto3.client('s3')
+
+              # Download the CSV file from S3
+              temp_file_path = '/tmp/temp.csv'
+              s3.download_file(s3_bucket, s3_key, temp_file_path)
+
+              # Read and process the CSV file, skipping the header row
+              with open(temp_file_path, 'r') as csvfile:
+                  csvreader = csv.reader(csvfile)
+                  # Skip the header row
+                  next(csvreader, None)
+                  
+                  for row in csvreader:
+                      store = row[0]
+                      product = row[1]
+                      count = int(row[2])
+                      
+            
+                      # Update DynamoDB table
+                      table.put_item(
+                          Item={
+                              'StoreRegion': store,
+                              'Product': product,
+                              'ProductCount': count
+                          }
+                      )
+              
+              # Clean up the temporary file
+              os.remove(temp_file_path)
+
+              return {
+                  'statusCode': 200,
+                  'body': 'CSV processing complete'
+              }
+
+  InventoryLambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: InventoryLambdaExecutionRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: InventoryLambdaPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:ListBucket
+                Resource: !Sub "arn:aws:s3:::${S3BucketName}/*"
+              - Effect: Allow
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:BatchWriteItem
+                Resource: !GetAtt InventoryTable.Arn
+
+  InventoryTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: AppleInventoryTable
+      AttributeDefinitions:
+        - AttributeName: Product
+          AttributeType: S
+        - AttributeName: StoreRegion
+          AttributeType: S
+      KeySchema:
+        - AttributeName: Product
+          KeyType: HASH
+        - AttributeName: StoreRegion
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES 
+
+  LowInventoryNotificationLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.lambda_handler
+      Role: !GetAtt LowInventoryLambdaExecutionRole.Arn
+      FunctionName: LowInventoryNotification
+      Runtime: python3.11
+      Timeout: 300
+      MemorySize: 128
+      Environment:
+        Variables:
+          SNSTopicArn: !Ref LowInventorySNSTopic
+      Code:
+        ZipFile: |
+          import boto3
+          import json
+          import os
+
+          def lambda_handler(event, context):
+              # Define DynamoDB and SNS clients
+              dynamo_table_name = 'AppleInventoryTable'
+              dynamodb = boto3.resource('dynamodb')
+              table = dynamodb.Table(dynamo_table_name)
+              sns = boto3.client('sns')
+              region = os.environ['AWS_REGION']
+              account_id = context.invoked_function_arn.split(":")[4]
+
+              # Scan DynamoDB table to get items with count of 5 or less than 5
+              response = table.scan(
+                  FilterExpression=boto3.dynamodb.conditions.Attr('ProductCount').lt(6)
+              )
+              
+              # Check if there are items with count less than 5
+              items = response.get('Items', [])
+              
+              if items:
+                  # Prepare notification message
+                  notification_message = "Low inventory alert:\n"
+                  for item in items:
+                      notification_message += f"StoreRegion: {item['StoreRegion']}, Item: {item['Product']}, Count: {item['ProductCount']}\n"
+
+                  # Publish notification to SNS
+                  sns.publish(
+                      # TopicArn='arn:aws:sns:us-east-1:471285348599:LowInventoryTopic',
+                      TopicArn = f'arn:aws:sns:{region}:{account_id}:LowInventoryTopic',
+                      Message=notification_message,
+                      Subject='Low Inventory Alert'
+                  )
+                  
+                  return {
+                      'statusCode': 200,
+                      'body': 'Notification sent successfully.'
+                  }
+              else:
+                  return {
+                      'statusCode': 200,
+                      'body': 'No items with count less than 5.'
+                  }
+
+  EventSourceMapping:
+    Type: AWS::Lambda::EventSourceMapping
+    Properties:
+      EventSourceArn: !GetAtt InventoryTable.StreamArn
+      FunctionName: !GetAtt LowInventoryNotificationLambdaFunction.Arn
+      BatchSize: 1000
+      MaximumBatchingWindowInSeconds: 10
+      StartingPosition: LATEST
+      MaximumRetryAttempts: 3
+      Enabled: True
+
+  LowInventoryLambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: LowInventoryLambdaExecutionRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LowInventoryLambdaPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:Scan
+                  - dynamodb:Query
+                Resource: !GetAtt InventoryTable.Arn
+              - Effect: Allow
+                Action:
+                  - dynamodb:GetRecords
+                  - dynamodb:DescribeStream
+                  - dynamodb:GetShardIterator
+                  - dynamodb:ListShards
+                  - dynamodb:ListStreams
+                Resource: !GetAtt InventoryTable.StreamArn
+              - Effect: Allow
+                Action:
+                  - sns:Publish
+                Resource: !Ref LowInventorySNSTopic
+
+  LowInventorySNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: LowInventoryTopic
+      TopicName: LowInventoryTopic
+
+  EmailSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      TopicArn: !Ref LowInventorySNSTopic
+      Endpoint: !Ref NotificationEmail
