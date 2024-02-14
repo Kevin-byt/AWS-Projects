@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+     {
+      "Effect": "Allow",
+      "Action": [
+       "dynamodb:PutItem",
+       "dynamodb:UpdateItem",
+       "dynamodb:GetItem",
+       "dynamodb:Scan",
+       "dynamodb:Query"
+      ],
+      "Resource": "{DynamoDB Table ARN}"
+     },
+     {
+               "Effect": "Allow",
+               "Action": [
+                   "dynamodb:GetRecords",
+                   "dynamodb:GetShardIterator",
+                   "dynamodb:DescribeStream",
+                   "dynamodb:ListStreams"
+               ],
+               "Resource": "{DynamoDB Table ARN}/Stream/*"
+           },
+     {
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "{SNS Topic ARN}"
+     }
+    ]
+}

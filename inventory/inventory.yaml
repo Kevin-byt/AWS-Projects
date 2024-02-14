@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: "2010-09-09"
 Parameters:
   S3BucketName:
     Type: String
-    Default: "productinventory130224"
+    # Default: "Enter the default bucket name you wish to use"
     Description: Name of the S3 bucket for uploading the CSV file
 
   NotificationEmail:
