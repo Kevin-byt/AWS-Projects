@@ -53,6 +53,12 @@ Explore the diverse range of projects featured in this portfolio:
 - **Technologies Used:** AWS Amplify, AWS Lambda, API Gateway, DynamoDB, AWS IAM
 - [Link to Project README](/12weeksworkshop/README.md)
 
+### Project 7: Inventory Management
+
+- **Description:** Deploying serverless archicture to inform when inventory levels are low
+- **Technologies Used:** AWS Lambda, DynamoDB, AWS IAM, AWS S3, AWS SNS
+- [Link to Project README](/inventory/README.md)
+
 ## Getting Started
 
 If any of these projects pique your interest, simply navigate to the respective project directories and follow the comprehensive instructions provided in their README files for setup and utilization.
