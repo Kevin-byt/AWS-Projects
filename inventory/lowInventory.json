@@ -20,7 +20,7 @@
                    "dynamodb:DescribeStream",
                    "dynamodb:ListStreams"
                ],
-               "Resource": "{DynamoDB Table ARN}/Stream/*"
+               "Resource": "{DynamoDB Table ARN}/stream/*"
            },
      {
       "Effect": "Allow",
