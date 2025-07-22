@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: |
+  sam-crud
+  AWS SAM CRUD API using API Gateway, Lambda, and DynamoDB (Python)
+
+Globals:
+  Function:
+    Timeout: 5
+    Tracing: Active
+    LoggingConfig:
+      LogFormat: JSON
+  Api:
+    TracingEnabled: true
+
+Resources:
+  CoreFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: core/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref CrudTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CrudTable
+      Events:
+        CreateApi:
+          Type: Api
+          Properties:
+            Path: /create
+            Method: post
+        ReadApi:
+          Type: Api
+          Properties:
+            Path: /read
+            Method: post
+        UpdateApi:
+          Type: Api
+          Properties:
+            Path: /update
+            Method: post
+        DeleteApi:
+          Type: Api
+          Properties:
+            Path: /delete
+            Method: post
+
+  CrudTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: crud
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+
+  ApplicationResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name: !Sub ApplicationInsights-SAM-${AWS::StackName}
+      ResourceQuery:
+        Type: CLOUDFORMATION_STACK_1_0
+  ApplicationInsightsMonitoring:
+    Type: AWS::ApplicationInsights::Application
+    Properties:
+      ResourceGroupName: !Ref ApplicationResourceGroup
+      AutoConfigurationEnabled: 'true'
+
+Outputs:
+  CoreApi:
+    Description: API Gateway endpoint URL for Prod stage for core function
+    Value: !Sub https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
+  CoreFunction:
+    Description: Core Lambda Function ARN
+    Value: !GetAtt CoreFunction.Arn
+  CoreFunctionIamRole:
+    Description: Implicit IAM Role created for core function
+    Value: !GetAtt CoreFunctionRole.Arn
+  CrudTableName:
+    Description: DynamoDB Table Name
+    Value: !Ref CrudTable
