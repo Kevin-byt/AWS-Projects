@@ -1,6 +1,7 @@
 # .env
-
+# .env
 **/terraform.tfvars
 
 **/.terraform/*
 **/.terraform*.terraform/
+# **/.env
