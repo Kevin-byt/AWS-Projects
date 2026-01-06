@@ -1,0 +1,6 @@
+# .env
+
+**/terraform.tfvars
+
+**/.terraform/*
+**/.terraform*.terraform/
